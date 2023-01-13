@@ -26,9 +26,6 @@ const Header = () => {
       </Link>
       </div>
       <div className='roster-button-container'>
-      <Link to="/roster"> 
-          <button className='roster-btn'>Roster</button>
-      </Link>
       </div>
     </header>
   )

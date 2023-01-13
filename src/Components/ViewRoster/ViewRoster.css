@@ -1,0 +1,19 @@
+.card-container{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 2%;
+}
+
+.player-card {
+  border: solid 3px blue;
+  padding-top: 2%;
+  height: 30vh;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

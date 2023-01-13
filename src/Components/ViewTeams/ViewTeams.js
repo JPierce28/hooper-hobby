@@ -39,7 +39,7 @@ const ViewTeams = () => {
 
   const teamCard = filteredTeams.map(team => {
     return (
-      <Link to="/roster">
+      <Link to={`/roster/${team.id}`}>
       <div className='team-card'>
         <img className='team-image' src={team.logo} alt={"Image of " + team.name}></img>
         <p>{team.name}</p>
