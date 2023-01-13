@@ -2,12 +2,10 @@ import {useEffect, useState} from 'react'
 import './ViewTeams.css'
 import Header from '../Header/Header'
 import { Link } from 'react-router-dom'
-// import fetchApi from '../../fetchApi'
-
-const url = "https://api-nba-v1.p.rapidapi.com/teams"
 
 const ViewTeams = () => {
   const [allTeams, setTeams] = useState([{}])
+  const [filteredTeams, setFilter] = useState([{}])
 
   useEffect(() => {
     fetch("https://api-nba-v1.p.rapidapi.com/teams", {
@@ -23,10 +21,23 @@ const ViewTeams = () => {
           return team.nbaFranchise === true && team.name !== "Home Team Stephen A"
         })
         setTeams(nbaTeams.sort())
+        setFilter(nbaTeams.sort())
       })
   }, [])
 
-  const teamCard = allTeams.map(team => {
+  const filterTeams = (event) => {
+    if(event.target.value === "All Teams"){
+      return setFilter(allTeams)
+    } else {
+    const filterDivision = allTeams.filter(team => {
+      return team.leagues.standard.conference === event.target.value
+    })
+    console.log(filterDivision);
+    setFilter(filterDivision)
+    }
+  }
+
+  const teamCard = filteredTeams.map(team => {
     return (
       <Link to="/roster">
       <div className='team-card'>
@@ -40,6 +51,20 @@ const ViewTeams = () => {
   return (
     <div>
       <Header />
+      <form className='form'>
+        <h2>Filter By Division</h2>
+        <select className='division-filter' onChange={event => filterTeams(event)}>
+          <option value='All Teams'>
+            All Teams
+          </option>
+          <option value="West">
+            Western
+          </option>
+          <option value="East">
+            Eastern
+          </option>
+        </select>
+      </form>
       <div className='team-container'>
         {teamCard}
       </div>

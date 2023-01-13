@@ -22,3 +22,16 @@
 .team-image {
   height: 80%;
 }
+
+.division-filter {
+  width: 15vw;
+  height: 5vh;
+}
+
+.form {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
