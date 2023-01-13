@@ -9,11 +9,23 @@
 }
 
 .player-card {
+  margin: 10px;
   border: solid 3px blue;
-  padding-top: 2%;
-  height: 30vh;
-  width: 20vw;
+  height: 35vh;
+  width: 15vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+}
+
+.team-logo {
+  height: 50%;
+  width: 50%;
+  padding-bottom: 2%;
+  border-bottom: solid 2px black;
+}
+
+.save-btn {
+  margin: 5%;
 }

@@ -3,8 +3,9 @@ import './ViewRoster.css'
 import Header from '../Header/Header'
 import { useParams } from 'react-router-dom'
 
-const ViewRoster = () => {
-  const [currentRoster, setRoster] = useState([{}])
+const ViewRoster = ({ teamLogo }) => {
+  const [currentRoster , setRoster] = useState([{}])
+  // const [savedCard, setSave] = useState(false)
   const { id } = useParams()
   
   useEffect(() => {
@@ -27,9 +28,13 @@ const ViewRoster = () => {
   let playerCards = currentRoster.map(player => {
       return (
         <div className='player-card'>
-          <p>{player.firstname} {player.lastname}</p>
-          <p>Height: {player.height.feets}'{player.height.inches}"</p>
-          <p>Weight: {player.weight.pounds}lbs</p>
+          <img className='team-logo' src={teamLogo}></img>
+          <li>Name: {player.firstname} {player.lastname}</li>
+          <li>Number: {player.leagues.standard.jersey}</li>
+          <li>Position: {player.leagues.standard.pos}</li>
+          <li>Height: {player.height.feets}'{player.height.inches}"</li>
+          <li>Weight: {player.weight.pounds}lbs</li>
+          <button className='save-btn'>Save Player Card</button>
         </div>
       )
     })
