@@ -23,7 +23,8 @@ const ViewRoster = ({ teamLogo }) => {
       })
       setRoster(goodData)
     })
-  })
+  },[])
+
   let playerCards = currentRoster.map(player => {
       return (
         <PlayerCard 
@@ -43,7 +44,7 @@ const ViewRoster = ({ teamLogo }) => {
   return (
     <div className='card-container'>
       <Header />
-      {/* {playerCards} */}
+      {playerCards}
     </div>
   )
 }

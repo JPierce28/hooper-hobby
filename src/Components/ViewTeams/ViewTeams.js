@@ -7,7 +7,7 @@ const ViewTeams = ({ currentLogo }) => {
   const [allTeams, setTeams] = useState([{}])
   const [filteredTeams, setFilter] = useState([{}])
 
-  useEffect(() => {
+ useEffect(() => {
     fetch("https://api-nba-v1.p.rapidapi.com/teams", {
       method: 'GET',
       headers: {
@@ -23,6 +23,7 @@ const ViewTeams = ({ currentLogo }) => {
         setTeams(nbaTeams.sort())
         setFilter(nbaTeams.sort())
       })
+      console.log("hello", allTeams);
   }, [])
 
   const filterTeams = (event) => {
