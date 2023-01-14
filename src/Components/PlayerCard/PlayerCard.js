@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import './PlayerCard.css'
 
-const PlayerCard = ({ roster, saveCard }) => {
+const PlayerCard = ({ roster, saveCard, deleteCard }) => {
   let location = useLocation()
   const { id } = useParams()
 
@@ -11,7 +11,13 @@ const PlayerCard = ({ roster, saveCard }) => {
       return player.id === playerId
     })
     saveCard(findPlayer)
-    console.log(findPlayer)
+  }
+
+  const deletePlayer = (playerId) => {
+    let findPlayer = roster.find(player => {
+      return player.id === playerId
+    })
+    deleteCard(findPlayer)
   }
 
   let currentRoster = roster.map(player => {
@@ -24,6 +30,7 @@ const PlayerCard = ({ roster, saveCard }) => {
         <li>Height: {player.height.feets}'{player.height.inches}"</li>
         <li>Weight: {player.weight.pounds}</li>
         {location.pathname === `/roster/${id}` && <button className='save-btn' onClick={() => saveNewCard(player.id)}>Save Player Card</button>}
+        {location.pathname === "/my-cards" && <button className='delete-btn' onClick={() => deletePlayer(player.id)}>Delete Player Card</button>}
       </div>
     )
   })

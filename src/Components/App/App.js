@@ -16,8 +16,14 @@ function App() {
   }
 
   const saveCard = (player) => {
-    setCards([...savedCards, player])
-    console.log(savedCards)
+    setCards(cards => [...cards, player])
+  }
+
+  const deleteCard = (player) => {
+    let newSaved = savedCards.filter(card => {
+      return player.id !== card.id
+    })
+    setCards(newSaved)
   }
 
 
@@ -27,8 +33,8 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/teams" element={<ViewTeams currentLogo={currentLogo}/>} />
       <Route path="/about" element={<About />} />
-      <Route path="/roster/:id" element={<ViewRoster teamLogo={teamLogo} saveCard={saveCard}/>} />
-      <Route path="/my-cards" element={<MyCards myCards={savedCards} teamLogo={teamLogo}/>} />
+      <Route path="/roster/:id" element={<ViewRoster teamLogo={teamLogo} saveCard={saveCard} />} />
+      <Route path="/my-cards" element={<MyCards myCards={savedCards} deleteCard={deleteCard}/>} />
     </Routes>
   )
 }
