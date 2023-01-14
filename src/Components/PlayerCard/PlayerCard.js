@@ -11,7 +11,6 @@ const PlayerCard = ({ roster, saveCard }) => {
       return player.id === playerId
     })
     saveCard(findPlayer)
-    console.log(findPlayer)
   }
 
   let currentRoster = roster.map(player => {

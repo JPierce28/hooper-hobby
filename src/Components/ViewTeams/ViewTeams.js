@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react'
 import './ViewTeams.css'
 import Header from '../Header/Header'
 import { Link } from 'react-router-dom'
-import ViewRoster from '../ViewRoster/ViewRoster'
 
 const ViewTeams = ({ currentLogo }) => {
   const [allTeams, setTeams] = useState([{}])
