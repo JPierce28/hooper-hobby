@@ -9,7 +9,7 @@ import MyCards from "../MyCards/MyCards"
 
 function App() {
   const [teamLogo, setLogo] = useState("");
-  const [savedCards, setCards] = useState([{}])
+  const [savedCards, setCards] = useState([])
 
   const currentLogo = (logo) => {
     setLogo(logo)
@@ -28,7 +28,7 @@ function App() {
       <Route path="/teams" element={<ViewTeams currentLogo={currentLogo}/>} />
       <Route path="/about" element={<About />} />
       <Route path="/roster/:id" element={<ViewRoster teamLogo={teamLogo} saveCard={saveCard}/>} />
-      <Route path="/my-cards" element={<MyCards myCards={savedCards}/>} />
+      <Route path="/my-cards" element={<MyCards myCards={savedCards} teamLogo={teamLogo}/>} />
     </Routes>
   )
 }
