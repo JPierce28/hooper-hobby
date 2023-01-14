@@ -3,7 +3,7 @@ import './ViewTeams.css'
 import Header from '../Header/Header'
 import { Link } from 'react-router-dom'
 
-const ViewTeams = () => {
+const ViewTeams = ({ currentLogo }) => {
   const [allTeams, setTeams] = useState([{}])
   const [filteredTeams, setFilter] = useState([{}])
 
@@ -39,9 +39,9 @@ const ViewTeams = () => {
 
   const teamCard = filteredTeams.map(team => {
     return (
-      <Link to="/roster">
+      <Link to={`/roster/${team.id}`}>
       <div className='team-card'>
-        <img className='team-image' src={team.logo} alt={"Image of " + team.name}></img>
+        <img className='team-image' id={team.logo} key={team.id} onClick={event => currentLogo(event.target.id)} src={team.logo} alt={"Image of " + team.name}></img>
         <p>{team.name}</p>
       </div>
       </Link>
