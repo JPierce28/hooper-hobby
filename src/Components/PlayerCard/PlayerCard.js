@@ -2,12 +2,13 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import './PlayerCard.css'
 
-const PlayerCard = ({ roster }) => {
-  let location = useLocation();
+const PlayerCard = ({ roster, currentLogo }) => {
+  let location = useLocation()
 
   let currentRoster = roster.map(player => {
     return (
       <div className='card-container'>
+        <img src={currentLogo} alt="Image of team logo"></img>
         <li>{player.firstname} {player.lastname}</li>
         <li>Number: {player.leagues.standard.jersey}</li>
         <li>Position: {player.leagues.standard.pos}</li>

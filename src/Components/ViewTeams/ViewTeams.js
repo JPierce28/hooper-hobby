@@ -7,7 +7,7 @@ import ViewRoster from '../ViewRoster/ViewRoster'
 const ViewTeams = ({ currentLogo }) => {
   const [allTeams, setTeams] = useState([{}])
   const [filteredTeams, setFilter] = useState([{}])
-
+  const [isLoading, setLoading] = useState(true)
   useEffect(() => {
     fetch("https://api-nba-v1.p.rapidapi.com/teams", {
       method: 'GET',
@@ -18,12 +18,18 @@ const ViewTeams = ({ currentLogo }) => {
       })
       .then(response => response.json())
       .then(data => {
-        const nbaTeams = data.response.filter(team => {
-          return team.nbaFranchise === true && team.name !== "Home Team Stephen A"
-        })
-        setTeams(nbaTeams.sort())
-        setFilter(nbaTeams.sort())
+        if(data.errors.length === 0){
+          const nbaTeams = data.response.filter(team => {
+            return team.nbaFranchise === true && team.name !== "Home Team Stephen A"
+          })
+          setTeams(nbaTeams.sort())
+          setFilter(nbaTeams.sort())
+          setLoading(false)
+        } else {
+          return
+        }
       })
+             
   }, [])
 
   const filterTeams = (event) => {
@@ -39,7 +45,7 @@ const ViewTeams = ({ currentLogo }) => {
 
   const teamCard = filteredTeams.map(team => {
     return (
-      <Link to={`/roster/${team.id}`} element={<ViewRoster teamLogo={team.logo}/>}>
+      <Link to={`/roster/${team.id}`}>
       <div className='team-card'>
         <img className='team-image' id={team.logo} key={team.id} onClick={event => currentLogo(event.target.id)} src={team.logo} alt={"Image of " + team.name}></img>
         <p>{team.name}</p>
@@ -51,6 +57,7 @@ const ViewTeams = ({ currentLogo }) => {
   return (
     <div>
       <Header />
+      {isLoading === true && <h1>Data Loading...</h1>}
       <form className='form'>
         <h2>Filter By Division</h2>
         <select className='division-filter' onChange={event => filterTeams(event)}>

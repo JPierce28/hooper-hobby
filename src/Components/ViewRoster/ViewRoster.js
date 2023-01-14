@@ -35,7 +35,7 @@ const ViewRoster = ({ teamLogo }) => {
     <div className='roster-container'>
       <Header />
       {isLoading === true && <h1>Loading Information...</h1>}
-      {isLoading === false && <PlayerCard roster={currentRoster}/>}
+      {isLoading === false && <PlayerCard roster={currentRoster} currentLogo={teamLogo}/>}
     </div>
   )
 }
