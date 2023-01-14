@@ -8,7 +8,7 @@ const ViewRoster = ({ teamLogo }) => {
   const [currentRoster , setRoster] = useState([{}])
   const { id } = useParams()
   
-  useEffect(() => {
+  const getRoster = () => {
     fetch(`https://api-nba-v1.p.rapidapi.com/players?team=${id}&season=2022`, {
       method: "GET",
       headers: {
@@ -23,7 +23,8 @@ const ViewRoster = ({ teamLogo }) => {
       })
       setRoster(goodData)
     })
-  })
+  }
+
   let playerCards = currentRoster.map(player => {
       return (
         <PlayerCard 
@@ -43,7 +44,7 @@ const ViewRoster = ({ teamLogo }) => {
   return (
     <div className='card-container'>
       <Header />
-      {/* {playerCards} */}
+      {playerCards}
     </div>
   )
 }
