@@ -9,18 +9,26 @@ import MyCards from "../MyCards/MyCards"
 
 function App() {
   const [teamLogo, setLogo] = useState("");
+  const [savedCards, setCards] = useState([{}])
 
   const currentLogo = (logo) => {
     setLogo(logo)
   }
+
+  const saveCard = (player) => {
+    setCards([...savedCards, player])
+    console.log(savedCards)
+  }
+
+
 
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/teams" element={<ViewTeams currentLogo={currentLogo}/>} />
       <Route path="/about" element={<About />} />
-      <Route path="/roster/:id" element={<ViewRoster teamLogo={teamLogo}/>} />
-      <Route path="/my-cards" element={<MyCards />} />
+      <Route path="/roster/:id" element={<ViewRoster teamLogo={teamLogo} saveCard={saveCard}/>} />
+      <Route path="/my-cards" element={<MyCards myCards={savedCards}/>} />
     </Routes>
   )
 }

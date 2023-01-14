@@ -4,7 +4,7 @@ import Header from '../Header/Header'
 import { useParams } from 'react-router-dom'
 import PlayerCard from '../PlayerCard/PlayerCard'
 
-const ViewRoster = ({ teamLogo }) => {
+const ViewRoster = ({ teamLogo, saveCard }) => {
   const [currentRoster , setRoster] = useState([{}])
   const [isLoading, setLoading] = useState(true)
   const { id } = useParams()
@@ -23,6 +23,7 @@ const ViewRoster = ({ teamLogo }) => {
       let goodData = data.response.filter(player => {
         return player.height.feets !== null
       })
+      console.log(goodData)
       setRoster(goodData)
       setLoading(false)
     } else {
@@ -32,11 +33,11 @@ const ViewRoster = ({ teamLogo }) => {
   }, [])
 
   return (
-    <div className='roster-container'>
+    <section className='roster-page'>
       <Header />
       {isLoading === true && <h1>Loading Information...</h1>}
-      {isLoading === false && <PlayerCard roster={currentRoster} currentLogo={teamLogo}/>}
-    </div>
+      {isLoading === false && <PlayerCard roster={currentRoster} currentLogo={teamLogo} saveCard={saveCard}/>}
+    </section>
   )
 }
 

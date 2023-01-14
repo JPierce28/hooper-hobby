@@ -1,26 +1,34 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import './PlayerCard.css'
 
-const PlayerCard = ({ roster, currentLogo }) => {
+const PlayerCard = ({ roster, currentLogo, saveCard }) => {
   let location = useLocation()
+  const { id } = useParams()
+
+  const saveNewCard = (playerId) => {
+    let findPlayer = roster.find(player => {
+      return player.id === playerId
+    })
+    saveCard(findPlayer)
+  }
 
   let currentRoster = roster.map(player => {
     return (
-      <div className='card-container'>
-        <img src={currentLogo} alt="Image of team logo"></img>
+      <div id={player.id} className='player-card'>
+        <img className='team-logo' src={currentLogo} alt="Image of team logo"></img>
         <li>{player.firstname} {player.lastname}</li>
         <li>Number: {player.leagues.standard.jersey}</li>
         <li>Position: {player.leagues.standard.pos}</li>
         <li>Height: {player.height.feets}'{player.height.inches}"</li>
-        <li>weight={player.weight.pounds}</li>
+        <li>Weight: {player.weight.pounds}</li>
+        {location.pathname === `/roster/${id}` && <button className='save-btn' onClick={() => saveNewCard(player.id)}>Save Player Card</button>}
       </div>
     )
   })
   return (
-    <div className='player-card'>
+    <div className='card-container'>
       {currentRoster}
-      {location.pathname === "/roster/:id" && <button className='save-btn'>Save Player Card</button>}
     </div>
   )
 }
