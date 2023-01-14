@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import './PlayerCard.css'
 
-const PlayerCard = ({ roster, currentLogo, saveCard }) => {
+const PlayerCard = ({ roster, saveCard }) => {
   let location = useLocation()
   const { id } = useParams()
 
@@ -11,12 +11,13 @@ const PlayerCard = ({ roster, currentLogo, saveCard }) => {
       return player.id === playerId
     })
     saveCard(findPlayer)
+    console.log(findPlayer)
   }
 
   let currentRoster = roster.map(player => {
     return (
       <div id={player.id} className='player-card'>
-        <img className='team-logo' src={currentLogo} alt="Image of team logo"></img>
+        <img className='team-logo' src={player.logo} alt="Image of team logo"></img>
         <li>{player.firstname} {player.lastname}</li>
         <li>Number: {player.leagues.standard.jersey}</li>
         <li>Position: {player.leagues.standard.pos}</li>

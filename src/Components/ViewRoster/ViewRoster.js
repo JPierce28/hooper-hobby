@@ -21,9 +21,9 @@ const ViewRoster = ({ teamLogo, saveCard }) => {
     .then(data => {
       if(data.errors.length === 0){
       let goodData = data.response.filter(player => {
+        player.logo = teamLogo
         return player.height.feets !== null
       })
-      console.log(goodData)
       setRoster(goodData)
       setLoading(false)
     } else {
@@ -36,7 +36,7 @@ const ViewRoster = ({ teamLogo, saveCard }) => {
     <section className='roster-page'>
       <Header />
       {isLoading === true && <h1>Loading Information...</h1>}
-      {isLoading === false && <PlayerCard roster={currentRoster} currentLogo={teamLogo} saveCard={saveCard}/>}
+      {isLoading === false && <PlayerCard roster={currentRoster} saveCard={saveCard}/>}
     </section>
   )
 }
