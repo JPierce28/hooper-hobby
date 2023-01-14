@@ -2,12 +2,13 @@ import {useEffect, useState} from 'react'
 import './ViewTeams.css'
 import Header from '../Header/Header'
 import { Link } from 'react-router-dom'
+import ViewRoster from '../ViewRoster/ViewRoster'
 
 const ViewTeams = ({ currentLogo }) => {
   const [allTeams, setTeams] = useState([{}])
   const [filteredTeams, setFilter] = useState([{}])
-
- useEffect(() => {
+  const [isLoading, setLoading] = useState(true)
+  useEffect(() => {
     fetch("https://api-nba-v1.p.rapidapi.com/teams", {
       method: 'GET',
       headers: {
@@ -17,13 +18,17 @@ const ViewTeams = ({ currentLogo }) => {
       })
       .then(response => response.json())
       .then(data => {
-        const nbaTeams = data.response.filter(team => {
-          return team.nbaFranchise === true && team.name !== "Home Team Stephen A"
-        })
-        setTeams(nbaTeams.sort())
-        setFilter(nbaTeams.sort())
+        if(data.errors.length === 0){
+          const nbaTeams = data.response.filter(team => {
+            return team.nbaFranchise === true && team.name !== "Home Team Stephen A"
+          })
+          setTeams(nbaTeams.sort())
+          setFilter(nbaTeams.sort())
+          setLoading(false)
+        } else {
+          return
+        }
       })
-      console.log("hello", allTeams);
   }, [])
 
   const filterTeams = (event) => {
@@ -33,7 +38,6 @@ const ViewTeams = ({ currentLogo }) => {
     const filterDivision = allTeams.filter(team => {
       return team.leagues.standard.conference === event.target.value
     })
-    console.log(filterDivision);
     setFilter(filterDivision)
     }
   }
@@ -52,6 +56,7 @@ const ViewTeams = ({ currentLogo }) => {
   return (
     <div>
       <Header />
+      {isLoading === true && <h1>Data Loading...</h1>}
       <form className='form'>
         <h2>Filter By Division</h2>
         <select className='division-filter' onChange={event => filterTeams(event)}>

@@ -4,10 +4,11 @@ import Header from '../Header/Header'
 import { useParams } from 'react-router-dom'
 import PlayerCard from '../PlayerCard/PlayerCard'
 
-const ViewRoster = ({ teamLogo }) => {
+const ViewRoster = ({ teamLogo, saveCard }) => {
   const [currentRoster , setRoster] = useState([{}])
+  const [isLoading, setLoading] = useState(true)
   const { id } = useParams()
-  
+
   useEffect(() => {
     fetch(`https://api-nba-v1.p.rapidapi.com/players?team=${id}&season=2022`, {
       method: "GET",
@@ -18,34 +19,25 @@ const ViewRoster = ({ teamLogo }) => {
     })
     .then(response => response.json())
     .then(data => {
+      if(data.errors.length === 0){
       let goodData = data.response.filter(player => {
         return player.height.feets !== null
       })
+      console.log(goodData)
       setRoster(goodData)
+      setLoading(false)
+    } else {
+      return 'hello'
+      }
     })
-  },[])
-
-  let playerCards = currentRoster.map(player => {
-      return (
-        <PlayerCard 
-          key={player.id}
-          logo={teamLogo}
-          firstName={player.firstname}
-          lastName={player.lastname}
-          number={player.leagues.standard.jersey}
-          position={player.leagues.standard.pos}
-          heightFeet={player.height.feets}
-          heightInches={player.height.inches}
-          weight={player.weight.pounds}
-        />
-      )
-    })
+  }, [])
 
   return (
-    <div className='card-container'>
+    <section className='roster-page'>
       <Header />
-      {playerCards}
-    </div>
+      {isLoading === true && <h1>Loading Information...</h1>}
+      {isLoading === false && <PlayerCard roster={currentRoster} currentLogo={teamLogo} saveCard={saveCard}/>}
+    </section>
   )
 }
 
