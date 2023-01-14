@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import './ViewTeams.css'
 import Header from '../Header/Header'
 import { Link } from 'react-router-dom'
+import ViewRoster from '../ViewRoster/ViewRoster'
 
 const ViewTeams = ({ currentLogo }) => {
   const [allTeams, setTeams] = useState([{}])
@@ -32,14 +33,13 @@ const ViewTeams = ({ currentLogo }) => {
     const filterDivision = allTeams.filter(team => {
       return team.leagues.standard.conference === event.target.value
     })
-    console.log(filterDivision);
     setFilter(filterDivision)
     }
   }
 
   const teamCard = filteredTeams.map(team => {
     return (
-      <Link to={`/roster/${team.id}`}>
+      <Link to={`/roster/${team.id}`} element={<ViewRoster teamLogo={team.logo}/>}>
       <div className='team-card'>
         <img className='team-image' id={team.logo} key={team.id} onClick={event => currentLogo(event.target.id)} src={team.logo} alt={"Image of " + team.name}></img>
         <p>{team.name}</p>

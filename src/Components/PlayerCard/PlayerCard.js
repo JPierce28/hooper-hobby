@@ -1,17 +1,25 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import './PlayerCard.css'
 
-const PlayerCard = ({key, logo, firstName, lastName, number, position, heightFeet, heightInches, weight}) => {
+const PlayerCard = ({ roster }) => {
+  let location = useLocation();
 
+  let currentRoster = roster.map(player => {
+    return (
+      <div className='card-container'>
+        <li>{player.firstname} {player.lastname}</li>
+        <li>Number: {player.leagues.standard.jersey}</li>
+        <li>Position: {player.leagues.standard.pos}</li>
+        <li>Height: {player.height.feets}'{player.height.inches}"</li>
+        <li>weight={player.weight.pounds}</li>
+      </div>
+    )
+  })
   return (
     <div className='player-card'>
-      <img className='team-logo' src={logo} alt="image of team logo"></img>
-      <li>Name: {firstName} {lastName}</li>
-      <li>Number: {number}</li>
-      <li>Position: {position}</li>
-      <li>Height: {heightFeet}'{heightInches}"</li>
-      <li>Weight: {weight}lbs</li>
-      <button className='save-btn'>Save Player Card</button>
+      {currentRoster}
+      {location.pathname === "/roster/:id" && <button className='save-btn'>Save Player Card</button>}
     </div>
   )
 }
