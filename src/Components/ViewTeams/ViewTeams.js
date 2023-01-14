@@ -29,7 +29,6 @@ const ViewTeams = ({ currentLogo }) => {
           return
         }
       })
-             
   }, [])
 
   const filterTeams = (event) => {
