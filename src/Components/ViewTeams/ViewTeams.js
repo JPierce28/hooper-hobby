@@ -60,8 +60,8 @@ const ViewTeams = ({ currentLogo }) => {
   return (
     <div className='teams-page'>
       <Header />
-      {isLoading === true && <h1>Loading Teams...</h1>}
-      {errorMessage && <h3>{errorMessage}</h3>}
+      {isLoading === true && <h1 className='loading-message'>Loading Teams...</h1>}
+      {errorMessage && <h3 className='loading-message'>{errorMessage}</h3>}
       <form className='form'>
         <h2 className='filter-header'>Filter By Division</h2>
         <select className='division-filter' onChange={event => filterTeams(event)}>

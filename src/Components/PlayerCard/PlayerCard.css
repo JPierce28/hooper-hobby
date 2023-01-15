@@ -1,12 +1,19 @@
 .player-card {
   margin: 10px;
   border: solid 3px blue;
-  height: 35vh;
+  height: 40vh;
   width: 15vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  background: white;
+  font-family: cursive;
+  box-shadow: 3px 3px 3px black;
+}
+
+.player-card:hover {
+  transform: scale(1.1);
 }
 
 .team-logo {
@@ -29,4 +36,23 @@
   align-items: center;
   height: 100vh;
   width: 100vw;
+}
+
+.save-btn {
+  margin: 1em;
+  font-family: cursive;
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+}
+
+.save-btn:hover {
+  background: lightblue;
+  cursor: pointer;
+}
+
+.save-card-message {
+  font-family: cursive;
+  color: white;
+  font-size: 5vh;
 }

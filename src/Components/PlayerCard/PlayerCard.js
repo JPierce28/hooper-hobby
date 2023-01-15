@@ -34,13 +34,13 @@ const PlayerCard = ({ roster, saveCard, deleteCard, deleteRosterPlayer }) => {
         <li>Height: {player.height.feets}'{player.height.inches}"</li>
         <li>Weight: {player.weight.pounds}</li>
         {location.pathname === `/roster/${id}` && <button className='save-btn' onClick={() => saveNewCard(player.id)}>Save Player Card</button>}
-        {location.pathname === "/my-cards" && <button className='delete-btn' onClick={() => deletePlayer(player.id)}>Delete Player Card</button>}
+        {location.pathname === "/my-cards" && <button className='save-btn' onClick={() => deletePlayer(player.id)}>Delete Player Card</button>}
       </div>
     )
   })
   return (
     <div className='display-container'>
-      <h3>{saveMessage}</h3>
+      <h3 className='save-card-message'>{saveMessage}</h3>
       <div className='card-container'>
         {currentRoster}
       </div>
