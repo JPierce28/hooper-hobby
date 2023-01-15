@@ -52,19 +52,18 @@ const ViewTeams = ({ currentLogo }) => {
       <Link to={`/roster/${team.id}`}>
       <div className='team-card'>
         <img className='team-image' id={team.logo} onClick={event => currentLogo(event.target.id)} src={team.logo} alt={"Image of " + team.name}></img>
-        <p>{team.name}</p>
       </div>
       </Link>
     )
   })
 
   return (
-    <div>
+    <div className='teams-page'>
       <Header />
-      {isLoading === true && <h1>Loading Teams...</h1>}
-      {errorMessage && <h3>{errorMessage}</h3>}
+      {isLoading === true && <h1 className='loading-message'>Loading Teams...</h1>}
+      {errorMessage && <h3 className='loading-message'>{errorMessage}</h3>}
       <form className='form'>
-        <h2>Filter By Division</h2>
+        <h2 className='filter-header'>Filter By Division</h2>
         <select className='division-filter' onChange={event => filterTeams(event)}>
           <option value='All Teams'>
             All Teams

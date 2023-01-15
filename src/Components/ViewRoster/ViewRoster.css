@@ -7,3 +7,16 @@
   justify-content: space-evenly;
   padding-top: 2%;
 }
+
+.roster-page {
+  height: 250vh;
+  width: 100vw;
+  background-image: url(../../images/court.png);
+  background-attachment: fixed;
+}
+
+.loading-message {
+  font-family: cursive;
+  color: white;
+  font-size: 5vh;
+}

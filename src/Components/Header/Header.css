@@ -3,8 +3,128 @@
   flex-direction: row;
   height: 20vh;
   width: 100vw;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   border: solid 3px black;
+  background: transparent;
 }
 
+.teams-button-container {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-title-container {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-button-container {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-family: cursive;
+  font-size: 8vh;
+  color: white;
+}
+
+.title:hover {
+  transform: scale(1.1);
+}
+
+.view-teams-btn {
+  font-family: cursive;
+  font-size: 5vh;
+  width: 220px;
+  height: 50px;
+  text-decoration: none;
+  border: 1px solid rgb(146, 148, 248);
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.view-teams-btn:hover {
+  box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
+}
+
+.view-teams-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(115, 118, 250, 0.4),
+    transparent
+  );
+  transition: all 650ms;
+}
+
+.view-teams-btn:hover:before {
+  left: 100%;
+}
+
+.my-cards-btn {
+  font-family: cursive;
+  font-size: 5vh;
+  width: 220px;
+  height: 50px;
+  text-decoration: none;
+  border: 1px solid rgb(146, 148, 248);
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-cards-btn:hover {
+  box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
+}
+
+.my-cards-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(115, 118, 250, 0.4),
+    transparent
+  );
+  transition: all 650ms;
+}
+
+.my-cards-btn:hover:before {
+  left: 100%;
+}

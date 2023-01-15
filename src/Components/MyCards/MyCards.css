@@ -1,0 +1,37 @@
+.my-header {
+  font-family: cursive;
+  font-size: 10vh;
+  color: white;
+}
+
+.no-cards {
+  font-family: cursive;
+  font-size: 4vh;
+  margin-top: -2em;
+  color: white;
+}
+
+.main-cards-display {
+  height: 150vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.user-cards {
+  height: 200vh;
+  width: 100vw;
+  background-image: url(../../images/kobe.png);
+  background-attachment: fixed;
+}
+
+.page-header {
+  margin-top: -10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

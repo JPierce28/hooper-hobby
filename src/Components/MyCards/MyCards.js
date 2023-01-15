@@ -4,12 +4,16 @@ import PlayerCard from '../PlayerCard/PlayerCard'
 
 const MyCards = ({ myCards, deleteCard }) => {
   return (
-    <div className='user-cards'>
+    <section className='user-cards'>
       <Header />
-      <h1>my cards</h1>
-      {myCards.length === 0 && <h3 className='no-cards'>No Cards to display, go save some basketball cards!</h3>}
-      <PlayerCard roster={myCards} deleteCard={deleteCard}/>
-    </div>
+      <div className='main-cards-display'>
+        <header className='page-header'>
+          <h1 className='my-header'>My Cards</h1>
+          {myCards.length === 0 && <h3 className='no-cards'>No cards to display, go save some basketball cards!</h3>}
+        </header>
+       <PlayerCard roster={myCards} deleteCard={deleteCard}/>
+      </div>
+    </section>
   )
 }
 

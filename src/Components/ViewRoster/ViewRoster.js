@@ -59,10 +59,10 @@ const ViewRoster = ({ teamLogo, saveCard, savedCards }) => {
 
   return (
     <section className='roster-page'>
-      {errorMessage && <h3>{errorMessage}</h3>}
+      {errorMessage && <h3 className='loading-message'>{errorMessage}</h3>}
       <Header />
       {isLoading === false && <PlayerCard roster={currentRoster} saveCard={saveCard} deleteRosterPlayer={deleteRosterPlayer}/>}
-      {isLoading === true && <h1>Loading Roster...</h1>}  
+      {isLoading === true && <h1 className='loading-message'>Loading Roster...</h1>}  
     </section>
   )
 }

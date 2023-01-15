@@ -7,13 +7,8 @@ const Header = () => {
     <header className='header'>
       <div className='teams-button-container'>
         <Link to="/teams"> 
-          <button className='view-teams-btn'>Teams</button>
+          <button className='view-teams-btn' type='button'>Teams</button>
         </Link>
-      </div>
-      <div className='about-button-container'>
-      <Link to="/about"> 
-          <button className='about-btn'>About</button>
-      </Link>
       </div>
       <div className='page-title-container'>
         <Link to="/">
@@ -24,8 +19,6 @@ const Header = () => {
       <Link to="/my-cards"> 
           <button className='my-cards-btn'>My Cards</button>
       </Link>
-      </div>
-      <div className='roster-button-container'>
       </div>
     </header>
   )
