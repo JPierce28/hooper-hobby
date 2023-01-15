@@ -7,6 +7,7 @@ const ViewTeams = ({ currentLogo }) => {
   const [allTeams, setTeams] = useState([{}])
   const [filteredTeams, setFilter] = useState([{}])
   const [isLoading, setLoading] = useState(true)
+  const [errorMessage, setMessage] = useState("")
   useEffect(() => {
     fetch("https://api-nba-v1.p.rapidapi.com/teams", {
       method: 'GET',
@@ -17,7 +18,7 @@ const ViewTeams = ({ currentLogo }) => {
       })
       .then(response => response.json())
       .then(data => {
-        if(data.errors.length === 0){
+        if(data.response.length !== 0){
           const nbaTeams = data.response.filter(team => {
             return team.nbaFranchise === true && team.name !== "Home Team Stephen A"
           })
@@ -25,7 +26,12 @@ const ViewTeams = ({ currentLogo }) => {
           setFilter(nbaTeams.sort())
           setLoading(false)
         } else {
-          return
+          throw new Error("Looks like something went wrong try reloading")
+        }
+      })
+      .catch(error => {
+        if(error.message.includes("Looks like something went wrong try reloading")){
+          setMessage("Looks like we couldn't load any data please try reloading the page")
         }
       })
   }, [])
@@ -55,7 +61,8 @@ const ViewTeams = ({ currentLogo }) => {
   return (
     <div>
       <Header />
-      {isLoading === true && <h1>Data Loading...</h1>}
+      {isLoading === true && <h1>Loading Teams...</h1>}
+      {errorMessage && <h3>{errorMessage}</h3>}
       <form className='form'>
         <h2>Filter By Division</h2>
         <select className='division-filter' onChange={event => filterTeams(event)}>

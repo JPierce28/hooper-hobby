@@ -1,8 +1,9 @@
-import React from 'react'
+import { useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import './PlayerCard.css'
 
-const PlayerCard = ({ roster, saveCard, deleteCard }) => {
+const PlayerCard = ({ roster, saveCard, deleteCard, deleteRosterPlayer }) => {
+  const [saveMessage, setMessage] = useState("")
   let location = useLocation()
   const { id } = useParams()
 
@@ -11,6 +12,9 @@ const PlayerCard = ({ roster, saveCard, deleteCard }) => {
       return player.id === playerId
     })
     saveCard(findPlayer)
+    deleteRosterPlayer(findPlayer)
+    setMessage("Saved Card, go to My Cards to view")
+    setTimeout(() => setMessage(""), 3000)
   }
 
   const deletePlayer = (playerId) => {
@@ -35,8 +39,11 @@ const PlayerCard = ({ roster, saveCard, deleteCard }) => {
     )
   })
   return (
-    <div className='card-container'>
-      {currentRoster}
+    <div className='display-container'>
+      <h3>{saveMessage}</h3>
+      <div className='card-container'>
+        {currentRoster}
+      </div>
     </div>
   )
 }
