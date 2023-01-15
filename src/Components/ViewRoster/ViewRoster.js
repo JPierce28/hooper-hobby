@@ -4,9 +4,10 @@ import Header from '../Header/Header'
 import { useParams } from 'react-router-dom'
 import PlayerCard from '../PlayerCard/PlayerCard'
 
-const ViewRoster = ({ teamLogo, saveCard }) => {
+const ViewRoster = ({ teamLogo, saveCard, savedCards }) => {
   const [currentRoster , setRoster] = useState([{}])
   const [isLoading, setLoading] = useState(true)
+  const [errorMessage, setMessage] = useState("")
   const { id } = useParams()
 
   useEffect(() => {
@@ -19,24 +20,49 @@ const ViewRoster = ({ teamLogo, saveCard }) => {
     })
     .then(response => response.json())
     .then(data => {
-      if(data.errors.length === 0){
-      let goodData = data.response.filter(player => {
+      if(data.response.length !== 0){
+      let cleanData = data.response.filter(player => {
         player.logo = teamLogo
         return player.height.feets !== null
       })
-      setRoster(goodData)
+      determineSaved(cleanData)
       setLoading(false)
     } else {
-      return 'hello'
+      throw new Error("Looks like something went wrong try reloading")
+      }
+    })
+    .catch(error => {
+      if(error.message.includes("Looks like something went wrong try reloading")){
+        setMessage("Looks like we couldn't load any data please try reloading the page")
       }
     })
   }, [])
 
+  const determineSaved = (roster) => {
+    let displayRoster = roster
+    if(savedCards.length === 0){
+      setRoster(roster)
+    } else {
+      savedCards.forEach( currentCard => {
+        displayRoster = displayRoster.filter( rosterCard => rosterCard.id !== currentCard.id)
+      })   
+    setRoster(displayRoster)
+    }
+  }
+
+  const deleteRosterPlayer = (playerId) => {
+    let newRoster = currentRoster.filter(player => {
+      return player.id !== playerId.id
+    })
+    setRoster(newRoster)
+  }
+
   return (
     <section className='roster-page'>
+      {errorMessage && <h3>{errorMessage}</h3>}
       <Header />
-      {isLoading === true && <h1>Loading Information...</h1>}
-      {isLoading === false && <PlayerCard roster={currentRoster} saveCard={saveCard}/>}
+      {isLoading === false && <PlayerCard roster={currentRoster} saveCard={saveCard} deleteRosterPlayer={deleteRosterPlayer}/>}
+      {isLoading === true && <h1>Loading Roster...</h1>}  
     </section>
   )
 }
