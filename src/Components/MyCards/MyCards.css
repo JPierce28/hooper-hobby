@@ -18,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+  min-width: 700px;
 }
 
 .user-cards {
@@ -26,6 +26,7 @@
   width: 100vw;
   background-image: url(../../images/kobe.png);
   background-attachment: fixed;
+  min-width: 700px;
 }
 
 .page-header {

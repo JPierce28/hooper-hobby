@@ -5,8 +5,9 @@
   width: 100vw;
   justify-content: center;
   align-items: center;
-  border: solid 3px black;
+  border-bottom: solid 3px black;
   background: transparent;
+  overflow-wrap: normal;
 }
 
 .teams-button-container {
@@ -15,6 +16,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 340px;
 }
 
 .page-title-container {
@@ -23,6 +25,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 340px;
 }
 
 .cards-button-container {
@@ -31,6 +34,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 340px;
 }
 
 .title {

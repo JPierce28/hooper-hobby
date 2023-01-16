@@ -13,6 +13,7 @@
   width: 100vw;
   background-image: url(../../images/court.png);
   background-attachment: fixed;
+  min-width: 700px;
 }
 
 .loading-message {
