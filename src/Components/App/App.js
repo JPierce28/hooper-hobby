@@ -29,10 +29,32 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/teams" element={<ViewTeams currentLogo={currentLogo} />} />
-      <Route path="/roster/:id" element={<ViewRoster teamLogo={teamLogo} saveCard={saveCard} savedCards={savedCards} />} />
-      <Route path="/my-cards" element={<MyCards myCards={savedCards} deleteCard={deleteCard} />} />
+      <Route 
+      path="/" 
+      element={<Home 
+        />} 
+      />
+      <Route 
+      path="/teams" 
+      element={<ViewTeams 
+        currentLogo={currentLogo}
+        />} 
+      />
+      <Route 
+      path="/roster/:id" 
+      element={<ViewRoster 
+        teamLogo={teamLogo} 
+        saveCard={saveCard} 
+        savedCards={savedCards}
+        />} 
+      />
+      <Route 
+      path="/my-cards" 
+      element={<MyCards 
+      myCards={savedCards} 
+      deleteCard={deleteCard} 
+        />} 
+      />
     </Routes>
   )
 }
