@@ -8,6 +8,7 @@ const ViewTeams = ({ currentLogo }) => {
   const [filteredTeams, setFilter] = useState([{}])
   const [isLoading, setLoading] = useState(true)
   const [errorMessage, setMessage] = useState("")
+  
   useEffect(() => {
     fetch("https://api-nba-v1.p.rapidapi.com/teams", {
       method: 'GET',
@@ -48,6 +49,7 @@ const ViewTeams = ({ currentLogo }) => {
   }
 
   const teamCard = filteredTeams.map(team => {
+    
     return (
       <Link to={`/roster/${team.id}`}>
       <div className='team-card'>
@@ -69,10 +71,10 @@ const ViewTeams = ({ currentLogo }) => {
             All Teams
           </option>
           <option value="West">
-            Western
+            West
           </option>
           <option value="East">
-            Eastern
+            East
           </option>
         </select>
       </form>

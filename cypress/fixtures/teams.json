@@ -1,0 +1,36 @@
+{
+  "response": [ 
+    {
+      "allStar": false,
+      "city": "Atlanta",
+      "code": "ATL",
+      "id": 1,
+      "leagues": 
+        {
+            "standard": {
+              "conference": "East", "division": "Southeast"
+            }
+          },
+      "logo": "https://upload.wikimedia.org/wikipedia/fr/e/ee/Hawks_2016.png",
+      "name": "Atlanta Hawks",
+      "nbaFranchise": true,
+      "nickName": "Hawks"
+    },
+    {
+      "allStar": false,
+      "city": "Boston",
+      "code": "BOS",
+      "id": 2,
+      "leagues": 
+        {
+            "standard": {
+              "conference": "East", "division": "Southeast"
+            }
+          },
+      "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/6/65/Celtics_de_Boston_logo.svg/1024px-Celtics_de_Boston_logo.svg.png",
+      "name": "Boston Celtics",
+      "nbaFranchise": true,
+      "nickName": "Celtics"
+    }
+  ]
+}
