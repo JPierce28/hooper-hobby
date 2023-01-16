@@ -1,5 +1,43 @@
-{
-  "name": "Using fixtures to represent data",
-  "email": "hello@cypress.io",
-  "body": "Fixtures are a great way to mock data for responses to routes"
-}
+{ 
+  "response": 
+  [
+    {
+      "id": 761,
+      "firstname": "John",
+      "lastname": "Collins",
+      "height": {
+        "feets": 6,
+        "inches": 9
+      },
+      "leagues": {
+        "standard": {
+          "jersey": 20,
+          "pos": "F-C"
+        }
+      },
+      "logo": "https://upload.wikimedia.org/wikipedia/fr/e/ee/Hawks_2016.png",
+      "weight": {
+        "pounds": 226
+      }
+    },
+    {
+      "id": 1046,
+      "firstname": "Trae",
+      "lastname": "Young",
+      "height": {
+        "feets": 6,
+        "inches": 1
+      },
+      "leagues": {
+        "standard": {
+          "jersey": 11,
+          "pos": "G"
+        }
+      },
+      "logo": "https://upload.wikimedia.org/wikipedia/fr/e/ee/Hawks_2016.png",
+      "weight": {
+        "pounds": 164
+      }
+    }
+  ]
+}  

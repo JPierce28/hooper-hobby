@@ -16,5 +16,11 @@ describe('Home Page', () => {
     cy.get(".team-card").should("have.length", "2")
     cy.get(".division-filter").select("West").should("have.value", "West")
     cy.get(".team-card").should("have.length", "0")
+    cy.get(".division-filter").select("All Teams").should("have.value", "All Teams")
+    cy.get(".team-card").should("have.length", "2")
+  })
+  it("Should have alt image tags for the teams", () => {
+    cy.get(".team-image").eq(0).should("have.attr", "alt", "Image of Atlanta Hawks")
+    cy.get(".team-image").eq(1).should("have.attr", "alt", "Image of Boston Celtics")
   })
 })
