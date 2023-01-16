@@ -1,4 +1,4 @@
-describe('Home Page', () => {
+describe('Teams Page Test', () => {
   beforeEach(() => {
     cy.intercept("https://api-nba-v1.p.rapidapi.com/teams", {
       method: "GET",

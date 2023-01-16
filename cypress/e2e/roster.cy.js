@@ -1,4 +1,4 @@
-describe('Home Page', () => {
+describe('Roster Test', () => {
   beforeEach(() => {
     cy.intercept("https://api-nba-v1.p.rapidapi.com/players?team=1&season=2022", {
       method: "GET",
