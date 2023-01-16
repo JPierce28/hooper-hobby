@@ -5,6 +5,8 @@
   background: linear-gradient(black, white); 
   background-image: url(../../images/home-image.png);
   background-size: cover;
+  min-width: 870px;
+  min-height: 720px;
 }
 
 .home-header {
@@ -26,6 +28,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  min-width: 870px;
 }
 
 .left-side {
@@ -58,6 +61,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 300px;
 }
 
 .teams-link:hover {
@@ -76,6 +80,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 300px;
 }
 
 .saved-link:hover {
