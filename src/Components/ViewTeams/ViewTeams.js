@@ -51,11 +51,11 @@ const ViewTeams = ({ currentLogo }) => {
   const teamCard = filteredTeams.map((team, index) => {
     
     return (
-    <div className='team-card' key={index} id={team.logo}>
-      <Link to={`/roster/${team.id}` }>
-        <img className='team-image' id={team.logo} onClick={event => currentLogo(event.target.id)} src={team.logo} alt={"Image of " + team.name}></img>
-      </Link>
-    </div>  
+    <Link key={index} to={`/roster/${team.id}`}>
+      <div className='team-card' key={index} id={team.logo} onClick={event => currentLogo(event.target.id)}>
+        <img className='team-image' id={team.logo} src={team.logo} alt={"Image of " + team.name}></img>
+      </div>  
+    </Link>
     )
   })
 
