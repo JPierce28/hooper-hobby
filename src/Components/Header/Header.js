@@ -1,13 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import  React  from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import './Header.css'
 
 const Header = () => {
+  let location = useLocation()
+
   return (
     <header className='header'>
       <div className='teams-button-container'>
         <Link to="/teams"> 
-          <button className='view-teams-btn' type='button'>Teams</button>
+          {location.pathname !== '/teams' && <button className='view-teams-btn' type='button'>Teams</button>}
         </Link>
       </div>
       <div className='page-title-container'>
@@ -17,7 +19,7 @@ const Header = () => {
       </div>
       <div className='cards-button-container'>
       <Link to="/my-cards"> 
-          <button className='my-cards-btn'>My Cards</button>
+        {location.pathname !== '/my-cards' && <button className='my-cards-btn'>My Cards</button>}
       </Link>
       </div>
     </header>
